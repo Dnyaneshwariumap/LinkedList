@@ -2,7 +2,7 @@ package LinkedList;
 
 public class LinkedListAssign  <T>{
     static Node head;
-    Node tail;
+    static Node tail;
     static class Node<T>{
         T data;
         Node next;
@@ -69,6 +69,21 @@ public class LinkedListAssign  <T>{
         }
     }
 
+    public T popLast() {
+        if (head == null) {
+            return null;
+        } else {
+            Node<T> temp = head;
+            while (temp.next != tail) {
+                tail = temp.next;
+            }
+            T data = (T) tail.data;
+            temp.next = null;
+            tail = temp;
+            return data;
+        }
+    }
+
     public static void main(String[] args){
         System.out.println("Welcome to Linked List Assignment");
         LinkedListAssign list = new LinkedListAssign();// UC2
@@ -79,8 +94,9 @@ public class LinkedListAssign  <T>{
         list.insert(30);//UC4
 
         printList(list);
-        list.pop();
+        list.pop();//UC5
+        printList(list);
+        list.popLast();//UC6
         printList(list);
     }
 }
-  
